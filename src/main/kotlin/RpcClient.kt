@@ -5,11 +5,11 @@ import org.example.RpcServiceGrpc
 
 object RpcClient {
 
-    private val channel: ManagedChannel? = ManagedChannelBuilder
+    private val channel: ManagedChannel = ManagedChannelBuilder
         .forAddress(RpcMainServiceURL.GrpcServiceURL, RpcMainServiceURL.GrpcServicePort)
         .usePlaintext()
         .build()
 
-    val stub: RpcServiceGrpc.RpcServiceBlockingStub? = RpcServiceGrpc.newBlockingStub(channel)
+    val stub: RpcServiceGrpc.RpcServiceBlockingStub = RpcServiceGrpc.newBlockingStub(channel)
         .withInterceptors(AllureGrpc())
 }

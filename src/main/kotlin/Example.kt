@@ -9,7 +9,7 @@ class Example {
     open class EmailSender(private val email: String,
                       private val emailPass: String): ISender {
 
-        public override fun sendMessage(to: String, mailText: String){
+        public override fun sendMessage(to: String, text: String){
             // using email, emailPass
         }
     }
@@ -21,8 +21,8 @@ class Example {
             // some code
             return text
         }
-        public override fun sendMessage(to: String, mailText: String){
-            val prettyText = doItPretty(mailText)
+        override fun sendMessage(to: String, text: String){
+            val prettyText = doItPretty(text)
             super.sendMessage(to, prettyText)
         }
     }
@@ -30,7 +30,7 @@ class Example {
     class VkSender(private val login: String,
                    private val password: String): ISender {
 
-        public override fun sendMessage(to: String, vkText: String){
+        public override fun sendMessage(to: String, text: String){
             // using login, password
         }
     }
@@ -44,7 +44,6 @@ class Example {
         println(a + b)
     }
 
-    @Test
     fun main() {
 
         val temp = MyClass(1,2)
@@ -53,7 +52,7 @@ class Example {
         println(temp.b)
         temp.extension()
 
-        val someSender: ISender = EmailSender("", "") // явный интерфейс ISender
+//        val someSender: ISender = EmailSender("", "") // явный интерфейс ISender
 
         val arr = arrayOf(
             EmailSender("from1@mail.ru", "******1"),
